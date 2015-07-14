@@ -43,6 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\AbTestMasterSection.cs" />
+    <Compile Include="Configuration\ParameterCollection.cs" />
+    <Compile Include="Configuration\ParameterElement.cs" />
+    <Compile Include="Configuration\SplitViewElement.cs" />
+    <Compile Include="Configuration\TargetCollection.cs" />
+    <Compile Include="Configuration\TargetElement.cs" />
     <Compile Include="Domain\SplitGoal.cs" />
     <Compile Include="Domain\SplitView.cs" />
     <Compile Include="Initialization\Bootstrapper.cs" />
@@ -57,6 +62,7 @@
     <Compile Include="Services\Constants.cs" />
     <Compile Include="Services\HttpHelpers.cs" />
     <Compile Include="Services\LogService.cs" />
+    <Compile Include="Services\SplitViewRepository.cs" />
     <Compile Include="Services\TargetService.cs" />
     <Compile Include="Target\DatabaseTarget.cs" />
     <Compile Include="Target\FileTarget.cs" />

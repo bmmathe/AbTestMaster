@@ -5,13 +5,13 @@ namespace Web.Controllers
 {
     public class HomeController : AbTestMasterController
     {
-        [SplitView("PositiveVersion", "LandingTest", "ReceiptPageGoal")]
+        [SplitView("PositiveVersion", "LandingTest", "ReceiptPageGoal", .5)]
         public ActionResult IndexVariantA()
         {
             return View();
         }
 
-        [SplitView("SmearCampaignVersion", "LandingTest", "ReceiptPageGoal")]
+        [SplitView("SmearCampaignVersion", "LandingTest", "ReceiptPageGoal", .5)]
         public ActionResult IndexVariantB()
         {
             return View();
@@ -22,25 +22,25 @@ namespace Web.Controllers
             return View();
         }
 
-        [SplitView("Striped", "TableTest", "ReceiptPageGoal")]
+        [SplitView("Striped", "TableTest", "ReceiptPageGoal", .9)]
         public PartialViewResult TableVariantA()
         {
             return PartialView("Partials/_TableVariantA");
         }
 
-        [SplitView("PlainWithColor", "TableTest", "ReceiptPageGoal", .6)]
+        [SplitView("PlainWithColor", "TableTest", "ReceiptPageGoal", .1)]
         public PartialViewResult TableVariantB()
         {
             return PartialView("Partials/_TableVariantB");
         }
 
-        [SplitView("RedDanger", "WarningTest", "ReceiptPageGoal", .8)]
+        [SplitView("RedDanger", "WarningTest", "ReceiptPageGoal", .9)]
         public PartialViewResult WarningVariantA()
         {
             return PartialView("Partials/_WarningVariantA");
         }
 
-        [SplitView("BlueDisclaimer", "WarningTest", "ReceiptPageGoal", .2)]
+        [SplitView("BlueDisclaimer", "WarningTest", "ReceiptPageGoal", .1)]
         public PartialViewResult WarningVariantB()
         {
             return PartialView("Partials/_WarningVariantB");

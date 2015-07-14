@@ -6,6 +6,7 @@ using System.Text;
 using System.Web.Mvc;
 using AbTestMaster.Domain;
 using AbTestMaster.MvcExtensions;
+using AbTestMaster.Services;
 
 namespace AbTestMaster.Initialization
 {
@@ -32,9 +33,10 @@ namespace AbTestMaster.Initialization
 
                     if (splitViewAttributes != null)
                     {
+                        var splitViewRepository = new SplitViewRepository();
                         foreach (var splitViewAttribute in splitViewAttributes)
                         {
-                            groups.Add(new SplitView
+                            var splitView = new SplitView
                             {
                                 SplitViewName = splitViewAttribute.SplitView.SplitViewName,
                                 SplitGroup = splitViewAttribute.SplitView.SplitGroup,
@@ -44,7 +46,12 @@ namespace AbTestMaster.Initialization
                                 Area = area,
                                 Ratio = splitViewAttribute.SplitView.Ratio,
                                 Namespace = controllerNamespace
-                            });
+                            };
+                            if (TargetService.Config.SplitViews.OverrideSettingsFromDatabase)
+                            {
+                                splitView = splitViewRepository.GetSplitView(splitView);
+                            }
+                            groups.Add(splitView);
                         }
                     }
                 }
