@@ -20,29 +20,25 @@ namespace AbTestMaster.Services
                     conn.Open();
                     using (var cmd = conn.CreateCommand())
                     {
-                        cmd.CommandText = @"SELECT * FROM [dbo].[AbSplitView] WHERE SplitName = @SplitName";
+                        cmd.CommandText = @"SELECT SplitGroup, SplitGoal, Ratio FROM [dbo].[AbSplitView] WHERE SplitName = @SplitName";
                         cmd.Parameters.AddWithValue("@SplitName", splitView.SplitViewName);
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
-                            {
-                                var splitGroupOrdinal = reader.GetOrdinal("SplitGroup");
-                                var splitGoalOrdinal = reader.GetOrdinal("SplitGoal");
-                                var ratioOrdinal = reader.GetOrdinal("Ratio");
-
-                                if (!reader.IsDBNull(splitGroupOrdinal))
+                            {                                
+                                if (!reader.IsDBNull(0))
                                 {
-                                    splitView.SplitGroup = reader.GetString(splitGroupOrdinal);
+                                    splitView.SplitGroup = reader.GetString(0);
                                 }
 
-                                if (!reader.IsDBNull(splitGoalOrdinal))
+                                if (!reader.IsDBNull(1))
                                 {
-                                    splitView.Goal = reader.GetString(splitGoalOrdinal);
+                                    splitView.Goal = reader.GetString(1);
                                 }
 
-                                if (!reader.IsDBNull(ratioOrdinal))
+                                if (!reader.IsDBNull(2))
                                 {
-                                    splitView.Ratio = reader.GetDouble(ratioOrdinal);
+                                    splitView.Ratio = reader.GetDouble(2);
                                 }
                             }
                         }
