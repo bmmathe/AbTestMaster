@@ -1,5 +1,8 @@
-﻿namespace AbTestMaster.Domain
+﻿using System;
+
+namespace AbTestMaster.Domain
 {
+    [Serializable]
     internal class SplitGoal
     {
         public string Goal { get; set; }

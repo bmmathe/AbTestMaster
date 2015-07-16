@@ -9,7 +9,7 @@ using System.Web.Routing;
 namespace AbTestMaster.MvcExtensions
 {
     internal class AbTestMasterActionInvoker : ControllerActionInvoker
-    {
+    {   
         public override bool InvokeAction(ControllerContext controllerContext, string actionName)
         {
             SplitGoal splitGoal = HandleGoalCall(controllerContext, actionName);
